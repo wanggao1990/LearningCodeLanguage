@@ -1,2 +1,2 @@
 # LearningCodeLanguage
-c/c++
+go
