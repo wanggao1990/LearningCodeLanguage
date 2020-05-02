@@ -1,2 +1,2 @@
 # LearningCodeLanguage
-difeferent code language in different branch
+c/c++
