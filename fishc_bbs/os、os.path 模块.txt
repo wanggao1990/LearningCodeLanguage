@@ -1,0 +1,2665 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>os、os.path 模块中关于文件、目录常用的函数使用方法,《零基础入门学习Python》,Python交流,鱼C论坛 -  Powered by Discuz!</title>
+<link href="http://bbs.fishc.com/thread-45512-1-1.html" rel="canonical" />
+<meta name="keywords" content="小甲鱼编程教学,编程视频教学,免费编程教学,编程技术交流,C语言教学,汇编教学,win32教学,Delphi教学,加密与解密,Linux教学,Python教学,Windows程序设计,SDK编程教学" />
+<meta name="description" content=" os、os.path 模块中关于文件、目录常用的函数使用方法 " />
+<meta name="generator" content="Discuz! X3.1" />
+<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+<meta name="copyright" content="2001-2013 Comsenz Inc." />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<base href="http://bbs.fishc.com/" /><link rel="stylesheet" type="text/css" href="data/cache/style_52_common.css?X6m" /><link rel="stylesheet" type="text/css" href="data/cache/style_52_forum_viewthread.css?X6m" /><script type="text/javascript">var STYLEID = '52', STATICURL = 'static/', IMGDIR = 'template/dreambred_c_apple/images/common/', VERHASH = 'X6m', charset = 'gbk', discuz_uid = '0', cookiepre = 'oMVX_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'login|newthread', creditnotice = '1|荣誉|,2|鱼币|,3|贡献|,5|技术值|,6|C币|', defaultstyle = '', REPORTURL = 'aHR0cDovL2Jicy5maXNoYy5jb20vZm9ydW0ucGhwP21vZD12aWV3dGhyZWFkJnRpZD00NTUxMiZleHRyYT1wYWdlJTNEMiZwYWdlPTE=', SITEURL = 'http://bbs.fishc.com/', JSPATH = 'data/cache/', DYNAMICURL = '';</script>
+<script src="data/cache/common.js?X6m" type="text/javascript"></script>
+
+
+<!--<link href="apple_c_3.css" rel="stylesheet" type="text/css" />--><meta name="application-name" content="鱼C论坛" />
+<meta name="msapplication-tooltip" content="鱼C论坛" />
+<meta name="msapplication-task" content="name=门户;action-uri=http://bbs.fishc.com/portal.php;icon-uri=http://bbs.fishc.com/template/dreambred_c_apple/images/common//portal.ico" /><meta name="msapplication-task" content="name=论坛;action-uri=http://bbs.fishc.com/forum.php;icon-uri=http://bbs.fishc.com/template/dreambred_c_apple/images/common//bbs.ico" />
+<meta name="msapplication-task" content="name=群组;action-uri=http://bbs.fishc.com/group.php;icon-uri=http://bbs.fishc.com/template/dreambred_c_apple/images/common//group.ico" /><meta name="msapplication-task" content="name=空间;action-uri=http://bbs.fishc.com/home.php;icon-uri=http://bbs.fishc.com/template/dreambred_c_apple/images/common//home.ico" /><link rel="archives" title="鱼C论坛" href="http://bbs.fishc.com/archiver/" />
+<script src="data/cache/forum.js?X6m" type="text/javascript"></script>
+    
+</head>
+
+<body id="nv_forum" class="pg_viewthread" onkeydown="if(event.keyCode==27) return false;">
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+        
+<div id="toptb" class="cl">
+        <div class="wp">
+<div class="z"><a href="javascript:;"  onclick="setHomepage('http://bbs.fishc.com/');">设为首页</a><a href="http://bbs.fishc.com/"  onclick="addFavorite(this.href, '鱼C论坛');return false;">收藏本站</a>                    </div>
+
+
+<script src="data/cache/logging.js?X6m" type="text/javascript"></script>
+<div class="fastlg cl">
+<div class="y pns">
+            <div class="no">
+                <a href="member.php?mod=logging&amp;action=login&amp;referer=" onClick="showWindow('login', this.href);return false;" class="xi2">登录</a>
+                <span class="pipe">|</span>
+                <a href="member.php?mod=register_315">立即注册</a>
+            </div>
+</div>
+
+<div class="fastlg_fm y" style="margin-right: 10px; padding-right: 10px">
+<p><a href="http://bbs.fishc.com/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D45512%26extra%3Dpage%253D2%26page%3D1&statfrom=login_simple"><img src="template/dreambred_c_apple/images/common//qq_login.gif" class="vm" alt="QQ登录" /></a></p>
+<p class="hm xg1" style="padding-top: 2px;">只需一步，快速开始</p>
+</div>
+</div>
+                        
+</div>
+</div>
+        <div class="toptb"></div>
+
+        
+        	        
+<div id="qmenu_menu" class="p_pop blk" style="display: none;">
+<div class="ptm pbw hm">
+请 <a href="javascript:;" class="xi2" onclick="lsSubmit()"><strong>登录</strong></a> 后使用快捷导航<br />没有帐号？<a href="member.php?mod=register_315" class="xi2 xw1">立即注册</a>
+</div>
+<div id="fjump_menu" class="btda"></div></div><div id="hd">
+<div class="wp">
+            
+            
+<div class="hdc cl">                    <h2><a href="./" title="鱼C论坛"><img src="template/dreambred_c_apple/images//logo.png" alt="鱼C论坛" border="0" /></a></h2>
+                    <div class="nv clearfix">
+                        <ul>
+                                                            <li id="mn_portal" ><a href="portal.php" hidefocus="true" title="Portal"   style="font-weight: bold;">门户<span>Portal</span></a></li>                                                            <li class="a" id="mn_forum" ><a href="forum.php" hidefocus="true" title="BBS"   style="font-weight: bold;">论坛<span>BBS</span></a></li>                                                            <li id="mn_home" ><a href="home.php" hidefocus="true" title="Space"   style="font-weight: bold;">空间<span>Space</span></a></li>                                                            <li id="mn_Nc00d" ><a href="bestanswer.php" hidefocus="true" title="加入组织，赢丰厚奖品！"   style="font-weight: bold;color: orange">互助平台<span>加入组织，赢丰厚奖品！</span></a></li>                                                            <li id="mn_forum_11" ><a href="forum.php?mod=collection" hidefocus="true" title="Collection"   style="font-weight: bold;">淘帖<span>Collection</span></a></li>                                                            <li id="mn_group" ><a href="group.php" hidefocus="true" title="Group"   style="font-weight: bold;">群组<span>Group</span></a></li>                                                            <li id="mn_N816a" ><a href="http://bbs.fishc.com/forum-105-1.html" hidefocus="true" title="好书推荐"   style="font-weight: bold;">好书<span>好书推荐</span></a></li>                                                            <li id="mn_N4dac" onmouseover="showMenu({'ctrlid':this.id,'ctrlclass':'hover','duration':2})"><a href="#" hidefocus="true" target="_blank"   style="font-weight: bold;color: red">VIP通道</a></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+                                            </div>
+                    <a href="javascript:;" id="qmenu" onMouseOver="delayShow(this, function () {showMenu({'ctrlid':'qmenu','pos':'34!','ctrlclass':'a','duration':2});showForummenu(243);})">&nbsp;</a>
+
+</div>
+                
+
+
+<ul class="p_pop h_pop" id="mn_N4dac_menu" style="display: none"><li><a href="http://blog.fishc.com" hidefocus="true" target="_blank" >最新视频下载</a></li><li><a href="http://bbs.fishc.com/thread-51842-1-1.html" hidefocus="true" target="_blank"  style="color: red">教学资源打包（VIP特权）</a></li><li><a href="http://bbs.fishc.com/forum-150-1.html" hidefocus="true" target="_blank" >课件与源代码（VIP免费）</a></li><li><a href="http://bbs.fishc.com/forum-149-1.html" hidefocus="true" target="_blank" >VIP每月领取津贴</a></li><li><a href="http://fishc.com/dvd/vip.html" hidefocus="true" target="_blank" >VIP会员特权一览</a></li></ul><div class="p_pop h_pop" id="mn_userapp_menu" style="display: none"></div><div id="mu" class="cl">
+</div>
+                
+                
+                <!--landscape-->
+                <div class="landscape clear">
+                	<div class="searcharea">
+                    <div id="scbar" class="cl">
+<form id="scbar_form" method="post" autocomplete="off" onsubmit="searchFocus($('scbar_txt'))" action="search.php?searchsubmit=yes" target="_blank">
+<input type="hidden" name="mod" id="scbar_mod" value="search" />
+<input type="hidden" name="formhash" value="92c671ac" />
+<input type="hidden" name="srchtype" value="title" />
+<input type="hidden" name="srhfid" value="243" />
+<input type="hidden" name="srhlocality" value="forum::viewthread" />
+        <table cellspacing="0" cellpadding="0">
+<tr>
+            	<td class="choarea"><a href="javascript:;" id="scbar_type" class="showmenu xg1 xs2" onclick="showMenu(this.id)" hidefocus="true">搜索</a></td>
+<td class="txtarea"><input type="text" name="srchtxt" id="scbar_txt" value="请输入搜索内容" autocomplete="off" x-webkit-speech speech /></td>
+<td class="btnarea"><button type="submit" name="searchsubmit" id="scbar_btn" sc="1" class="pn pnc" value="true"><strong class="xi2 xs2">搜索</strong></button>
+                </td>
+</tr>
+</table>
+        <div id="scbar_hot" style=" display:none;">
+</div>
+</form>
+</div>
+<ul id="scbar_type_menu" class="p_pop" style="display: none;"><li><a href="javascript:;" rel="curforum" fid="243" >本版</a></li><li><a href="javascript:;" rel="forum" class="curtype">帖子</a></li><li><a href="javascript:;" rel="user">用户</a></li></ul>
+<script type="text/javascript">
+initSearchmenu('scbar', '');
+</script>
+                    </div>
+                    
+            		<div class="flash2"><EMBED style="height:128; width:615px" align=right src="dreambred_dir/apple_c_3/images/stars.swf" type=application/x-shockwave-flash ; quality="high" wmode="transparent" width="615" height="128"></div>
+                </div>
+                <!--landscape-->
+                </div>
+</div>
+
+<script>
+			document.oncontextmenu = function(){ 
+			showDialog('本版块禁止复制，请尊重版权！', 'alert');
+			return false; 
+			} 
+			document.onkeydown = function(){ 
+			if (event.ctrlKey && window.event.keyCode==67 || window.event.keyCode==123){ 
+			showDialog('本版块禁止复制，请尊重版权！', 'alert');
+			return false; 
+			} 
+			} 
+			document.body.oncopy = function (){ 
+			showDialog('本版块禁止复制，请尊重版权！', 'alert');
+			return false; 
+			} 
+			 
+			</script> <div id="wp" class="wp">
+<script type="text/javascript">var fid = parseInt('243'), tid = parseInt('45512');</script>
+
+<script src="data/cache/forum_viewthread.js?X6m" type="text/javascript"></script>
+<script type="text/javascript">zoomstatus = parseInt(1);var imagemaxwidth = '600';var aimgcount = new Array();</script>
+
+<style id="diy_style" type="text/css"></style>
+<!--[diy=diynavtop]--><div id="diynavtop" class="area"></div><!--[/diy]-->
+<div id="pt" class="bm cl">
+<div class="z">
+<a href="./" class="nvhm" title="首页">鱼C论坛</a><em>&raquo;</em><a href="forum.php">论坛</a> <em>&rsaquo;</em> <a href="forum.php?gid=28">技术交流区</a> <em>&rsaquo;</em> <a href="forum-173-1.html">Python交流</a> <em>&rsaquo;</em> <a href="forum-243-2.html">《零基础入门学习Python》</a> <em>&rsaquo;</em> <a href="thread-45512-1-1.html">os、os.path 模块中关于文件、目录常用的函数使用方法</a>
+</div>
+</div>
+
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="ct" class="wp cl">
+<div id="pgt" class="pgs mbm cl ">
+<div class="pgt"><div class="pg"><strong>1</strong><a href="thread-45512-2-2.html">2</a><a href="thread-45512-3-2.html">3</a><a href="thread-45512-4-2.html">4</a><a href="thread-45512-5-2.html">5</a><a href="thread-45512-6-2.html">6</a><label><input type="text" name="custompage" class="px" size="2" title="输入页码，按回车快速跳转" value="1" onkeydown="if(event.keyCode==13) {window.location='forum.php?mod=viewthread&tid=45512&amp;extra=page%3D2&amp;page='+this.value;; doane(event);}" /><span title="共 6 页"> / 6 页</span></label><a href="thread-45512-2-2.html" class="nxt">下一页</a></div></div>
+<span class="y pgb" id="visitedforums" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id,'pos':'34'})"><a href="forum-243-2.html">返回列表</a></span>
+<a id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=243')" href="javascript:;" title="发新帖"><img src="template/dreambred_c_apple/images/common//pn_post.png" alt="发新帖" /></a></div>
+
+
+<div class="titleshow">
+
+
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls ptn pbn">
+<div class="hm ptn">
+<span class="xg1">查看:</span> <span class="xi1">27625</span><span class="pipe">|</span><span class="xg1">回复:</span> <span class="xi1">108</span>
+</div>
+</td>
+<td class="plc ptm pbn vwthd">
+<div class="y">
+<a href="forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=45512" title="上一主题"><img src="template/dreambred_c_apple/images/common//thread-prev.png" alt="上一主题" class="vm" /></a>
+<a href="forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=45512" title="下一主题"><img src="template/dreambred_c_apple/images/common//thread-next.png" alt="下一主题" class="vm" /></a>
+</div>
+<h1 class="ts">
+<a href="forum.php?mod=forumdisplay&amp;fid=243&amp;filter=typeid&amp;typeid=403">[扩展阅读]</a>
+<span id="thread_subject">os、os.path 模块中关于文件、目录常用的函数使用方法</span>
+</h1>
+<span class="xg1">
+&nbsp;<img src="template/dreambred_c_apple/images/common//hot_1.gif" alt="" title="热度: 159" />
+<a href="thread-45512-1-1.html" onclick="return copyThreadUrl(this, '鱼C论坛')" >[复制链接]</a>
+</span>
+</td>
+</tr>
+</table>
+    
+    </div>
+    <div id="postlist" class="pl bm">
+    
+
+
+<table cellspacing="0" cellpadding="0" class="ad">
+<tr>
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table><div id="post_1762097" ><table id="pid1762097" class="plhin" summary="pid1762097" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1762097" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-9.html" target="_blank" class="xw1" style="color: #00FF7F"><font color=red>小甲鱼</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1762097" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1762097_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-9.html" target="_blank" class="xi2" style="color: #00FF7F"><font color=red>小甲鱼</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?9" target="_blank" class="xi2">9</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=9&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=9&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>	
+</dl><div class="imicn">
+<a href="home.php?mod=space&amp;uid=9&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-9.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=9&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：2041 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=9" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=9" target="_blank"><font color=red>56</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<div id="fj" class="y">
+<label class="z">电梯直达</label>
+<input type="text" class="px p_fre z" size="2" onkeyup="$('fj_btn').href='forum.php?mod=redirect&ptid=45512&authorid=0&postno='+this.value" onkeydown="if(event.keyCode==13) {window.location=$('fj_btn').href;return false;}" title="跳转到指定楼层" />
+<a href="javascript:;" id="fj_btn" class="z" title="跳转到指定楼层"><img src="template/dreambred_c_apple/images/common//fj_btn.png" alt="跳转到指定楼层" class="vm" /></a>
+</div>
+<strong>
+<a href="thread-45512-1-1.html"   id="postnum1762097" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>1</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1762097" src="static/image/common/online_admin.gif" />
+<em id="authorposton1762097">发表于 2014-4-3 21:33:24</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=9" rel="nofollow">只看该作者</a>
+<span class="none"><img src="template/dreambred_c_apple/images/common//arw_r.gif" class="vm" alt="回帖奖励" /></span>
+<span class="pipe show">|</span><a href="forum.php?mod=viewthread&amp;tid=45512&amp;extra=page%3D2&amp;ordertype=1"  class="show">倒序浏览</a>
+<span class="pipe show">|</span><a href="javascript:;" onclick="readmode($('thread_subject').innerHTML, 1762097);" class="show">阅读模式</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><style type="text/css">.pcb{margin-right:0}</style><div class="pcb">
+ 
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1762097">
+<div class="a_pr"style="margin-left:10px;width:120px"><a href="http://bbs.fishc.com/thread-54904-1-1.html" target="_blank"><img src="http://bbs.fishc.com/data/attachment/common/cf/163704w7ennaee3laa9e3l.png" height="240" width="120" alt="鱼C论坛版主招聘" border="0"></a></div><div class="attach_nopermission attach_tips">
+<div>
+<h3><strong>
+马上注册加入鱼C，享用更多服务吧^_^</strong></h3>
+<p>您需要 <a href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href);return false;">登录</a> 才可以下载或查看，没有帐号？<a href="member.php?mod=register_315" title="注册帐号">立即注册</a> 
+
+<a href="http://bbs.fishc.com/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D45512%26extra%3Dpage%253D2%26page%3D1&statfrom=login" target="_top" rel="nofollow"><img src="template/dreambred_c_apple/images/common//qq_login.gif" class="vm" /></a>
+
+</p>
+</div>
+<span class="atips_close" onclick="this.parentNode.style.display='none'">x</span>
+</div>
+我们第一节课就讲过了，Python是跨平台的语言，也即是说同样的源代码在不同的操作系统不需要修改就可以同样实现。<br />
+<br />
+因此Python的作者就倒腾了OS模块这么一个玩意儿出来，有了OS模块，我们不需要关心什么操作系统下使用什么模块，OS模块会帮你选择正确的模块并调用。<br />
+<br />
+<br />
+<div align="center"><strong><font size="3">os模块中关于文件/目录常用的函数使用方法</font></strong></div><br />
+<br />
+<table cellspacing="0" class="t_table" style="width:98%"><tr><td><div align="center"><strong><font style="font-size:12.0pt">函数名</font></strong></div></td><td><div align="center"><strong><font style="font-size:12.0pt">使用方法</font></strong></div></td></tr><tr><td><font style="font-size:12.0pt">getcwd()</font><br />
+</td><td><font style="font-size:12.0pt">返回当前工作目录</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">chdir(path)</font><br />
+</td><td><font style="font-size:12.0pt">改变工作目录</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">listdir(path='.')</font><br />
+</td><td><font style="font-size:12.0pt">列举指定目录中的文件名（'.'表示当前目录，'..'表示上一级目录）</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">mkdir(path)</font><br />
+</td><td><font style="font-size:12.0pt">创建单层目录，如该目录已存在抛出异常</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">makedirs(path)</font><br />
+</td><td><font style="font-size:12.0pt">递归创建多层目录，如该目录已存在抛出异常，注意：'E:\\a\\b'和'E:\\a\\c'并不会冲突</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">remove(path)</font><br />
+</td><td><font style="font-size:12.0pt">删除文件</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">rmdir(path)</font><br />
+</td><td><font style="font-size:12.0pt">删除单层目录，如该目录非空则抛出异常</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">removedirs(path)</font><br />
+</td><td><font style="font-size:12.0pt">递归删除目录，从子目录到父目录逐层尝试删除，遇到目录非空则抛出异常</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">rename(old, new)</font><br />
+</td><td><font style="font-size:12.0pt">将文件old重命名为new</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">system(command)</font><br />
+</td><td><font style="font-size:12.0pt">运行系统的shell命令</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">walk(top)</font><br />
+</td><td><font style="font-size:12.0pt">遍历top路径以下所有的子目录，返回一个三元组：(路径, [包含目录], [包含文件])【具体实现方案请看：第30讲课后作业^_^】</font><br />
+</td></tr><tr><td colspan="2" width="553"><div align="center"><i><font style="font-size:12.0pt">以下是支持路径操作中常用到的一些定义，支持所有平台</font></i></div></td></tr><tr><td><font style="font-size:12.0pt">os.curdir</font><br />
+</td><td><font style="font-size:12.0pt">指代当前目录（'.'）</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">os.pardir</font><br />
+</td><td><font style="font-size:12.0pt">指代上一级目录（'..'）</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">os.sep</font><br />
+</td><td><font style="font-size:12.0pt">输出操作系统特定的路径分隔符（Win下为'\\'，Linux下为'/'）</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">os.linesep</font><br />
+</td><td><font style="font-size:12.0pt">当前平台使用的行终止符（Win下为'\r\n'，Linux下为'\n'）</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">os.name</font><br />
+</td><td><font style="font-size:12.0pt">指代当前使用的操作系统（包括：'posix',&nbsp;&nbsp;'nt', 'mac', 'os2', 'ce', 'java'）</font><br />
+</td></tr></table><br />
+<br />
+<br />
+<div align="center"><font size="3"><strong>os.path模块中关于路径常用的函数使用方法</strong></font></div><br />
+<br />
+<table cellspacing="0" class="t_table" style="width:98%"><tr><td><div align="center"><strong><font style="font-size:12.0pt">函数名</font></strong></div></td><td><div align="center"><strong><font style="font-size:12.0pt">使用方法</font></strong></div></td></tr><tr><td><font style="font-size:12.0pt">basename(path)</font><br />
+</td><td><font style="font-size:12.0pt">去掉目录路径，单独返回文件名</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">dirname(path)</font><br />
+</td><td><font style="font-size:12.0pt">去掉文件名，单独返回目录路径</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">join(path1[, path2[, ...]])</font><br />
+</td><td><font style="font-size:12.0pt">将path1, path2各部分组合成一个路径名</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">split(path)</font><br />
+</td><td><font style="font-size:12.0pt">分割文件名与路径，返回(f_path, f_name)元组。如果完全使用目录，它也会将最后一个目录作为文件名分离，且不会判断文件或者目录是否存在</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">splitext(path)</font><br />
+</td><td><font style="font-size:12.0pt">分离文件名与扩展名，返回(f_name, f_extension)元组</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">getsize(file)</font><br />
+</td><td><font style="font-size:12.0pt">返回指定文件的尺寸，单位是字节</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">getatime(file)</font><br />
+</td><td><font style="font-size:12.0pt">返回指定文件最近的访问时间（浮点型秒数，可用time模块的gmtime()或localtime()函数换算）</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">getctime(file)</font><br />
+</td><td><font style="font-size:12.0pt">返回指定文件的创建时间（浮点型秒数，可用time模块的gmtime()或localtime()函数换算）</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">getmtime(file)</font><br />
+</td><td><font style="font-size:12.0pt">返回指定文件最新的修改时间（浮点型秒数，可用time模块的gmtime()或localtime()函数换算）</font><br />
+</td></tr><tr><td colspan="2" width="553"><div align="center"><i><font style="font-size:12.0pt">以下为函数返回 True 或 False</font></i></div></td></tr><tr><td><font style="font-size:12.0pt">exists(path)</font><br />
+</td><td><font style="font-size:12.0pt">判断指定路径（目录或文件）是否存在</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">isabs(path)</font><br />
+</td><td><font style="font-size:12.0pt">判断指定路径是否为绝对路径</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">isdir(path)</font><br />
+</td><td><font style="font-size:12.0pt">判断指定路径是否存在且是一个目录</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">isfile(path)</font><br />
+</td><td><font style="font-size:12.0pt">判断指定路径是否存在且是一个文件</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">islink(path)</font><br />
+</td><td><font style="font-size:12.0pt">判断指定路径是否存在且是一个符号链接</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">ismount(path)</font><br />
+</td><td><font style="font-size:12.0pt">判断指定路径是否存在且是一个挂载点</font><br />
+</td></tr><tr><td><font style="font-size:12.0pt">samefile(path1, paht2)</font><br />
+</td><td><font style="font-size:12.0pt">判断path1和path2两个路径是否指向同一个文件</font><br />
+</td></tr></table><br />
+<br />
+</td></tr></table>
+
+
+</div>
+<div id="comment_1762097" class="cm">
+</div>
+
+<h3 class="psth xs1"><span class="icon_ring vm"></span>评分</h3>
+<dl id="ratelog_1762097" class="rate">
+<dd style="margin:0">
+<div id="post_rate_1762097"></div>
+<table class="ratl">
+<tr>
+<th class="xw1" width="120"><a href="forum.php?mod=misc&amp;action=viewratings&amp;tid=45512&amp;pid=1762097" onclick="showWindow('viewratings', this.href)" title="查看全部评分"> 参与人数 <span class="xi1">3</span></a></th><th class="xw1" width="80">荣誉 <i><span class="xi1">+7</span></i></th>
+<th class="xw1" width="80">鱼币 <i><span class="xi1">+7</span></i></th>
+<th class="xw1" width="80">贡献 <i><span class="xi1">+4</span></i></th>
+<th>
+<a href="javascript:;" onclick="toggleRatelogCollapse('ratelog_1762097', this);" class="y xi2 op">收起</a>
+<i class="txt_h">理由</i>
+</th>
+</tr>
+<tbody class="ratl_l"><tr id="rate_1762097_360437">
+<td>
+<a href="space-uid-360437.html" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=360437&size=small" /></a> <a href="space-uid-360437.html" target="_blank">Crosoe</a>
+</td><td class="xi1"> + 5</td>
+<td class="xi1"> + 5</td>
+<td class="xi1"> + 3</td>
+<td class="xg1"></td>
+</tr>
+<tr id="rate_1762097_347097">
+<td>
+<a href="space-uid-347097.html" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=347097&size=small" /></a> <a href="space-uid-347097.html" target="_blank">wangguohui</a>
+</td><td class="xi1"> + 1</td>
+<td class="xi1"> + 1</td>
+<td class="xg1"></td>
+<td class="xg1">支持楼主！</td>
+</tr>
+<tr id="rate_1762097_338615">
+<td>
+<a href="space-uid-338615.html" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=338615&size=small" /></a> <a href="space-uid-338615.html" target="_blank">tzcookie</a>
+</td><td class="xi1"> + 1</td>
+<td class="xi1"> + 1</td>
+<td class="xi1"> + 1</td>
+<td class="xg1"></td>
+</tr>
+</tbody>
+</table>
+<p class="ratc">
+<a href="forum.php?mod=misc&amp;action=viewratings&amp;tid=45512&amp;pid=1762097" onclick="showWindow('viewratings', this.href)" title="查看全部评分" class="xi2">查看全部评分</a>
+</p>
+</dd>
+</dl>
+
+<style>
+.keke_ds{ margin:10px auto; display:block; cursor:pointer;width: 134px;height: 49px; background-position:0px -98px; background-image: url('source/plugin/keke_ds/template/img/dsbtn.png');background-repeat: no-repeat;}
+.keke_ds:hover{ background-position:-134px -98px; }
+</style>
+<a class="keke_ds" id="keke_ds" onclick="showWindow(this.id, 'plugin.php?id=keke_ds:keke_ds&zzid=9&formhash=92c671ac');" href="javascript:"></a>
+</div>
+</div>
+
+<div class="cm">
+<h3 class="psth xs1"><span class="icon_ring vm"></span>本帖被以下淘专辑推荐:</h3>
+<ul class="mbw xl xl2 cl"><li>&middot; <a href="forum.php?mod=collection&amp;action=view&amp;ctid=198" title="python常用工具手册" target="_blank" class="xi2 xw1">python常用工具手册</a><span class="pipe">|</span><span class="xg1">主题: 18, 订阅: 145</span></li>
+<li>&middot; <a href="forum.php?mod=collection&amp;action=view&amp;ctid=485" title="python3.5.2" target="_blank" class="xi2 xw1">python3.5.2</a><span class="pipe">|</span><span class="xg1">主题: 22, 订阅: 8</span></li>
+<li>&middot; <a href="forum.php?mod=collection&amp;action=view&amp;ctid=393" title="Python部分内容收藏" target="_blank" class="xi2 xw1">Python部分内容收藏</a><span class="pipe">|</span><span class="xg1">主题: 5, 订阅: 3</span></li>
+<li>&middot; <a href="forum.php?mod=collection&amp;action=view&amp;ctid=256" title="python---by刀神" target="_blank" class="xi2 xw1">python---by刀神</a><span class="pipe">|</span><span class="xg1">主题: 2, 订阅: 0</span></li>
+</ul>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+<div id="p_btn" class="mtw mbm hm cl">
+<div class="tshare cl">
+<b>分享到:&nbsp;</b>
+
+
+<a href="http://bbs.fishc.com/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=4&thread_id=45512" id="k_share_to_qq" title="QQ好友和群" target="_blank"><i><img src="template/dreambred_c_apple/images/common//qq_share.png" alt="QQ好友和群" />QQ好友和群</i></a>
+<a href="javascript:void(0);" id="k_qqshare" onclick="postToQzone();" title="QQ空间"><i><img src="template/dreambred_c_apple/images/common//qzone.gif" alt="QQ空间" />QQ空间</i></a>
+<a href="javascript:void(0)" onclick="postToWb();" id="k_weiboshare" title="腾讯微博"><i><img src="template/dreambred_c_apple/images/common//weibo.png" alt="腾讯微博" />腾讯微博</i></a>
+<a href="javascript:void(0);" onclick="postToPengyou();" id="k_pengyoushare" title="腾讯朋友"><i><img src="template/dreambred_c_apple/images/common//pengyou.png" alt="腾讯朋友" />腾讯朋友</i></a>
+<script type="text/javascript">
+function postToWb(){
+var _t = encodeURI(document.title);
+var _url = encodeURIComponent(document.location);
+var _appkey = encodeURI("ce7fb946290e4109bdc9175108b6db3a");
+var _pic = "";
+var _site = encodeURIComponent("鱼C论坛");
+var _from = 'discuz';
+var _u = 'http://v.t.qq.com/share/share.php?url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic+'&title='+_t+'&from='+_from;
+window.open( _u,'', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+}
+function postToPengyou(){
+var _url = encodeURIComponent(document.location.href);
+var _site = encodeURIComponent("鱼C论坛");
+var _title = encodeURIComponent("os、os.path 模块中关于文件、目录常用的函数使用方法");
+var _pics = "";
+var _from = 'discuz';
+var _u = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?to=pengyou&url='+_url+'&site='+_site+'&title='+_title+'&pics='+_pics+'&from='+_from;
+window.open(_u);
+}
+</script>
+	
+
+</div>
+
+<a href="home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=45512&amp;formhash=92c671ac" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('favoritenumber').innerHTML + ' 人收藏'" title="收藏本帖"><i><img src="template/dreambred_c_apple/images/common//fav.gif" alt="收藏" />收藏<span id="favoritenumber">59</span></i></a>
+<a class="sharep" href="home.php?mod=spacecp&amp;ac=share&amp;type=thread&amp;id=45512" onclick="showWindow('sharethread', this.href, 'get', 0);" title="分享推精华"><i><img src="template/dreambred_c_apple/images/common//oshr.png" alt="分享" />分享<span id="sharenumber">2</span></i></a>
+<a href="forum.php?mod=collection&amp;action=edit&amp;op=addthread&amp;tid=45512" id="k_collect" onclick="showWindow(this.id, this.href);return false;" onmouseover="this.title = $('collectionnumber').innerHTML + ' 人淘帖'" title="淘好帖进专辑"><i><img src="template/dreambred_c_apple/images/common//collection.png" alt="分享" />淘帖<span id="collectionnumber">4</span></i></a>
+<a id="recommend_add" href="forum.php?mod=misc&amp;action=recommend&amp;do=add&amp;tid=45512&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = $('recommendv_add').innerHTML + ' 人顶'" title="顶一下"><i><img src="template/dreambred_c_apple/images/common//rec_add.gif" alt="顶" />顶<span id="recommendv_add">5</span></i></a>
+<a id="recommend_subtract" href="forum.php?mod=misc&amp;action=recommend&amp;do=subtract&amp;tid=45512&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = $('recommendv_subtract').innerHTML + ' 人踩'" title="踩一下"><i><img src="template/dreambred_c_apple/images/common//rec_subtract.gif" alt="踩" />踩<span id="recommendv_subtract" style="display:none">0</span></i></a>
+</div>
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1762097"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;reppost=1762097&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1762097', 'misc.php?mod=report&rtype=post&rid=1762097&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_1762270" ><table id="pid1762270" class="plhin" summary="pid1762270" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1762270" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-249302.html" target="_blank" class="xw1" style="color: #008000"><font color=red>福禄娃娃</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1762270" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1762270_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-249302.html" target="_blank" class="xi2" style="color: #008000"><font color=red>福禄娃娃</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?249302" target="_blank" class="xi2">249302</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=249302&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=249302&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=249302&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-249302.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=249302&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：355 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=249302" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=249302" target="_blank"><font color=red>3</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=1762270"   id="postnum1762270" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>2</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1762270" src="static/image/common/online_vip.gif" />
+<em id="authorposton1762270">发表于 2014-4-3 22:43:44</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=249302" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1762270">
+真强大，:lol:<br />
+rename(1.MP3, 1.txt)</td></tr></table>
+
+
+</div>
+<div id="comment_1762270" class="cm">
+</div>
+
+<div id="post_rate_div_1762270"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1762270"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=1762270&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=1762270&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1762270').innerHTML ? $('review_support_1762270').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1762270"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=1762270&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1762270').innerHTML ? $('review_against_1762270').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1762270"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1762270', 'misc.php?mod=report&rtype=post&rid=1762270&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_1767888" ><table id="pid1767888" class="plhin" summary="pid1767888" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1767888" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-280147.html" target="_blank" class="xw1" style="color: #008000">kuangkuang</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1767888" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1767888_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-280147.html" target="_blank" class="xi2" style="color: #008000">kuangkuang</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?280147" target="_blank" class="xi2">280147</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=280147&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=280147&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=280147&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-280147.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=280147&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：430 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=280147" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=280147" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=1767888"   id="postnum1767888" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>3</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1767888" src="static/image/common/online_vip.gif" />
+<em id="authorposton1767888">发表于 2014-4-6 19:48:14</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=280147" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1767888">
+为什么用os.path模块中函数时，不需要事先导入模块吗？</td></tr></table>
+
+
+</div>
+<div id="comment_1767888" class="cm">
+</div>
+
+<div id="post_rate_div_1767888"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1767888"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=1767888&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=1767888&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1767888').innerHTML ? $('review_support_1767888').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1767888"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=1767888&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1767888').innerHTML ? $('review_against_1767888').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1767888"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1767888', 'misc.php?mod=report&rtype=post&rid=1767888&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_1768018" ><table id="pid1768018" class="plhin" summary="pid1768018" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1768018" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-9.html" target="_blank" class="xw1" style="color: #00FF7F"><font color=red>小甲鱼</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1768018" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1768018_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-9.html" target="_blank" class="xi2" style="color: #00FF7F"><font color=red>小甲鱼</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?9" target="_blank" class="xi2">9</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=9&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=9&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>	
+</dl><div class="imicn">
+<a href="home.php?mod=space&amp;uid=9&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-9.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=9&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：2041 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=9" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=9" target="_blank"><font color=red>56</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=1768018"   id="postnum1768018" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>4</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1768018" src="static/image/common/online_admin.gif" />
+<em id="authorposton1768018">发表于 2014-4-6 20:43:56</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=9" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1768018">
+<div class="quote"><blockquote><font size="2"><font color="#999999">kuangkuang 发表于 2014-4-6 19:48</font> <a href="http://bbs.fishc.com/forum.php?mod=redirect&amp;goto=findpost&amp;pid=1767888&amp;ptid=45512" target="_blank"><style>.guestviewthumb {margin:10px auto; text-align:center;}.guestviewthumb a {font-size:12px;}.guestviewthumb_cur {cursor:url(template/dreambred_c_apple/images/common//scf.cur), default; max-width:400px;}.ie6 .guestviewthumb_cur { width:400px !important;}</style><div class="guestviewthumb"><img id="aimg_czZNB" class="guestviewthumb_cur" onclick="showWindow('login', 'member.php?mod=logging&action=login'+'&referer='+encodeURIComponent(location))" file="static/image/common/back.gif" border="0" alt="" /><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br><a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href+'&referer='+encodeURIComponent(location));">登录/注册后可看大图</a></div></a></font><br />
+为什么用os.path模块中函数时，不需要事先导入模块吗？</blockquote></div><br />
+import os的时候已经导入了</td></tr></table>
+
+
+</div>
+<div id="comment_1768018" class="cm">
+</div>
+
+<div id="post_rate_div_1768018"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1768018"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=1768018&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=1768018&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1768018').innerHTML ? $('review_support_1768018').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1768018"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=1768018&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1768018').innerHTML ? $('review_against_1768018').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1768018"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1768018', 'misc.php?mod=report&rtype=post&rid=1768018&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+<script type="text/javascript" reload="1">
+aimgcount[1768018] = ['czZNB'];
+attachimggroup(1768018);
+var aimgfid = 0;
+</script>
+</div><div id="post_1768164" ><table id="pid1768164" class="plhin" summary="pid1768164" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1768164" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-280147.html" target="_blank" class="xw1" style="color: #008000">kuangkuang</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1768164" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1768164_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-280147.html" target="_blank" class="xi2" style="color: #008000">kuangkuang</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?280147" target="_blank" class="xi2">280147</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=280147&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=280147&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=280147&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-280147.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=280147&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：430 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=280147" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=280147" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=1768164"   id="postnum1768164" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>5</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1768164" src="static/image/common/online_vip.gif" />
+<em id="authorposton1768164">发表于 2014-4-6 22:07:42</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=280147" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1768164">
+<div class="quote"><blockquote><font size="2"><font color="#999999">小甲鱼 发表于 2014-4-6 20:43</font> <a href="http://bbs.fishc.com/forum.php?mod=redirect&amp;goto=findpost&amp;pid=1768018&amp;ptid=45512" target="_blank"><div class="guestviewthumb"><img id="aimg_bPA12" class="guestviewthumb_cur" onclick="showWindow('login', 'member.php?mod=logging&action=login'+'&referer='+encodeURIComponent(location))" file="static/image/common/back.gif" border="0" alt="" /><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br><a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href+'&referer='+encodeURIComponent(location));">登录/注册后可看大图</a></div></a></font><br />
+import os的时候已经导入了</blockquote></div><br />
+谢谢，小甲鱼老湿的热心回答。不过，我还是有点疑惑，想问一下，os.path模块是不是os模块中的一部分，所以，在导入os模块时，已经把os.path模块一并导入python了，因此，在使用os.path模块中的函数时，就不需要重新导入了(当然如果我再次导入os.path是不是也没有错误啊)。这样理解对吗？</td></tr></table>
+
+
+</div>
+<div id="comment_1768164" class="cm">
+</div>
+
+<div id="post_rate_div_1768164"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1768164"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=1768164&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=1768164&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1768164').innerHTML ? $('review_support_1768164').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1768164"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=1768164&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1768164').innerHTML ? $('review_against_1768164').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1768164"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1768164', 'misc.php?mod=report&rtype=post&rid=1768164&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+<script type="text/javascript" reload="1">
+aimgcount[1768164] = ['bPA12'];
+attachimggroup(1768164);
+var aimgfid = 0;
+</script>
+</div><div id="post_1769479" ><table id="pid1769479" class="plhin" summary="pid1769479" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1769479" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-9.html" target="_blank" class="xw1" style="color: #00FF7F"><font color=red>小甲鱼</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1769479" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1769479_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-9.html" target="_blank" class="xi2" style="color: #00FF7F"><font color=red>小甲鱼</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?9" target="_blank" class="xi2">9</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=9&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=9&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>	
+</dl><div class="imicn">
+<a href="home.php?mod=space&amp;uid=9&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-9.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=9&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：2041 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=9" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=9" target="_blank"><font color=red>56</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=1769479"   id="postnum1769479" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>6</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1769479" src="static/image/common/online_admin.gif" />
+<em id="authorposton1769479">发表于 2014-4-7 15:06:01</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=9" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1769479">
+<div class="quote"><blockquote><font size="2"><font color="#999999">kuangkuang 发表于 2014-4-6 22:07</font> <a href="http://bbs.fishc.com/forum.php?mod=redirect&amp;goto=findpost&amp;pid=1768164&amp;ptid=45512" target="_blank"><div class="guestviewthumb"><img id="aimg_TMmPC" class="guestviewthumb_cur" onclick="showWindow('login', 'member.php?mod=logging&action=login'+'&referer='+encodeURIComponent(location))" file="static/image/common/back.gif" border="0" alt="" /><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br><a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href+'&referer='+encodeURIComponent(location));">登录/注册后可看大图</a></div></a></font><br />
+谢谢，小甲鱼老湿的热心回答。不过，我还是有点疑惑，想问一下，os.path模块是不是os模块中的一部分，所以 ...</blockquote></div><br />
+嗯啊，os里包含了os.path模块。</td></tr></table>
+
+
+</div>
+<div id="comment_1769479" class="cm">
+</div>
+
+<div id="post_rate_div_1769479"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1769479"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=1769479&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=1769479&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1769479').innerHTML ? $('review_support_1769479').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1769479"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=1769479&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1769479').innerHTML ? $('review_against_1769479').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1769479"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1769479', 'misc.php?mod=report&rtype=post&rid=1769479&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+<script type="text/javascript" reload="1">
+aimgcount[1769479] = ['TMmPC'];
+attachimggroup(1769479);
+var aimgfid = 0;
+</script>
+</div><div id="post_1953283" ><table id="pid1953283" class="plhin" summary="pid1953283" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1953283" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-274578.html" target="_blank" class="xw1">zhaopengfei</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1953283" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1953283_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-274578.html" target="_blank" class="xi2">zhaopengfei</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?274578" target="_blank" class="xi2">274578</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=274578&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=274578&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=274578&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-274578.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=274578&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：673 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=274578" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=274578" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=1953283"   id="postnum1953283" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>7</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1953283" src="static/image/common/online_member.gif" />
+<em id="authorposton1953283">发表于 2014-7-8 21:27:21</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=274578" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1953283">
+真心强大啊，不过太多了，记不住。</td></tr></table>
+
+
+</div>
+<div id="comment_1953283" class="cm">
+</div>
+
+<div id="post_rate_div_1953283"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1953283"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=1953283&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=1953283&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1953283').innerHTML ? $('review_support_1953283').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1953283"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=1953283&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1953283').innerHTML ? $('review_against_1953283').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1953283"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1953283', 'misc.php?mod=report&rtype=post&rid=1953283&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_1976978" ><table id="pid1976978" class="plhin" summary="pid1976978" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1976978" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-292005.html" target="_blank" class="xw1">005SR</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1976978" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1976978_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-292005.html" target="_blank" class="xi2">005SR</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?292005" target="_blank" class="xi2">292005</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=292005&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=292005&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=292005&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-292005.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=292005&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：51 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=292005" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=292005" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=1976978"   id="postnum1976978" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>8</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1976978" src="static/image/common/online_member.gif" />
+<em id="authorposton1976978">发表于 2014-7-22 15:06:41</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=292005" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1976978">
+这么专业啊</td></tr></table>
+
+
+</div>
+<div id="comment_1976978" class="cm">
+</div>
+
+<div id="post_rate_div_1976978"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1976978"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=1976978&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=1976978&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1976978').innerHTML ? $('review_support_1976978').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1976978"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=1976978&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1976978').innerHTML ? $('review_against_1976978').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1976978"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1976978', 'misc.php?mod=report&rtype=post&rid=1976978&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_1977118" ><table id="pid1977118" class="plhin" summary="pid1977118" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1977118" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-292005.html" target="_blank" class="xw1">005SR</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1977118" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1977118_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-292005.html" target="_blank" class="xi2">005SR</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?292005" target="_blank" class="xi2">292005</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=292005&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=292005&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=292005&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-292005.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=292005&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：51 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=292005" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=292005" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=1977118"   id="postnum1977118" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>9</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1977118" src="static/image/common/online_member.gif" />
+<em id="authorposton1977118">发表于 2014-7-22 16:42:35</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=292005" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1977118">
+这个太帅了</td></tr></table>
+
+
+</div>
+<div id="comment_1977118" class="cm">
+</div>
+
+<div id="post_rate_div_1977118"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition1977118"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=1977118&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=1977118&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1977118').innerHTML ? $('review_support_1977118').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1977118"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=1977118&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1977118').innerHTML ? $('review_against_1977118').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1977118"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport1977118', 'misc.php?mod=report&rtype=post&rid=1977118&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2011929" ><table id="pid2011929" class="plhin" summary="pid2011929" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2011929" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-294316.html" target="_blank" class="xw1">gavinlimliu</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2011929" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2011929_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-294316.html" target="_blank" class="xi2">gavinlimliu</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?294316" target="_blank" class="xi2">294316</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=294316&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=294316&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=294316&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-294316.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=294316&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：4 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=294316" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=294316" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2011929"   id="postnum2011929" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>10</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2011929" src="static/image/common/online_member.gif" />
+<em id="authorposton2011929">发表于 2014-8-10 12:42:58</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=294316" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2011929">
+great,thanks!</td></tr></table>
+
+
+</div>
+<div id="comment_2011929" class="cm">
+</div>
+
+<div id="post_rate_div_2011929"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2011929"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2011929&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2011929&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2011929').innerHTML ? $('review_support_2011929').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2011929"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2011929&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2011929').innerHTML ? $('review_against_2011929').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2011929"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2011929', 'misc.php?mod=report&rtype=post&rid=2011929&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2015525" ><table id="pid2015525" class="plhin" summary="pid2015525" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2015525" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-294205.html" target="_blank" class="xw1">noroot</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2015525" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2015525_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-294205.html" target="_blank" class="xi2">noroot</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?294205" target="_blank" class="xi2">294205</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=294205&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=294205&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=294205&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-294205.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=294205&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：10 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=294205" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=294205" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2015525"   id="postnum2015525" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>11</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2015525" src="static/image/common/online_member.gif" />
+<em id="authorposton2015525">发表于 2014-8-12 13:29:57</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=294205" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2015525">
+学习中……多谢整理和分享！{:1_1:}{:1_1:}</td></tr></table>
+
+
+</div>
+<div id="comment_2015525" class="cm">
+</div>
+
+<div id="post_rate_div_2015525"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2015525"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2015525&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2015525&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2015525').innerHTML ? $('review_support_2015525').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2015525"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2015525&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2015525').innerHTML ? $('review_against_2015525').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2015525"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2015525', 'misc.php?mod=report&rtype=post&rid=2015525&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2049226" ><table id="pid2049226" class="plhin" summary="pid2049226" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2049226" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-295283.html" target="_blank" class="xw1" style="color: red"><font color=red>wei_Y</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2049226" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2049226_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-295283.html" target="_blank" class="xi2" style="color: red"><font color=red>wei_Y</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/></a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?295283" target="_blank" class="xi2">295283</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=295283&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=295283&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>	
+</dl><div class="imicn">
+<a href="home.php?mod=space&amp;uid=295283&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-295283.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=295283&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：529 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=295283" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=295283" target="_blank"><font color=red>12</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2049226"   id="postnum2049226" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>12</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2049226" src="static/image/common/online_moderator.gif" />
+<em id="authorposton2049226">发表于 2014-8-31 11:55:44</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=295283" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2049226">
+这才发现这个。看答案有os模块还百度了一番- -。。</td></tr></table>
+
+
+</div>
+<div id="comment_2049226" class="cm">
+</div>
+
+<div id="post_rate_div_2049226"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2049226"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2049226&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2049226&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2049226').innerHTML ? $('review_support_2049226').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2049226"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2049226&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2049226').innerHTML ? $('review_against_2049226').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2049226"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2049226', 'misc.php?mod=report&rtype=post&rid=2049226&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2069399" ><table id="pid2069399" class="plhin" summary="pid2069399" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2069399" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-297303.html" target="_blank" class="xw1">macchen</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2069399" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2069399_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-297303.html" target="_blank" class="xi2">macchen</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?297303" target="_blank" class="xi2">297303</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=297303&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=297303&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=297303&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-297303.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=297303&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：81 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=297303" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=297303" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2069399"   id="postnum2069399" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>13</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2069399" src="static/image/common/online_member.gif" />
+<em id="authorposton2069399">发表于 2014-9-12 10:16:13</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=297303" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2069399">
+<img src="static/image/smiley/lovely/20080925104549676.gif" smilieid="91" border="0" alt="" />OS，sys好用的两大系统模块。</td></tr></table>
+
+
+</div>
+<div id="comment_2069399" class="cm">
+</div>
+
+<div id="post_rate_div_2069399"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2069399"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2069399&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2069399&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2069399').innerHTML ? $('review_support_2069399').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2069399"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2069399&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2069399').innerHTML ? $('review_against_2069399').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2069399"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2069399', 'misc.php?mod=report&rtype=post&rid=2069399&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2116710" ><table id="pid2116710" class="plhin" summary="pid2116710" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2116710" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-300333.html" target="_blank" class="xw1">甜心卜乙</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2116710" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2116710_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-300333.html" target="_blank" class="xi2">甜心卜乙</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?300333" target="_blank" class="xi2">300333</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=300333&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=300333&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=300333&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-300333.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=300333&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：4 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=300333" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=300333" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2116710"   id="postnum2116710" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>14</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2116710" src="static/image/common/online_member.gif" />
+<em id="authorposton2116710">发表于 2014-10-13 14:53:52</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=300333" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2116710">
+#!/usr/bin/env python<br />
+# -*- coding: utf-8 -*-<br />
+# encoding: utf-8<br />
+__author__ = 'sweet'<br />
+import os<br />
+import os.path<br />
+<br />
+def Renamefiles(srcdir,prefix):<br />
+&nbsp; &nbsp; srcfiles=os.listdir(srcdir)<br />
+&nbsp; &nbsp; index =1<br />
+&nbsp; &nbsp; for srcfile in srcfiles:<br />
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;srcfilename=os.path.splitext(srcfile)[0][1:]<br />
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;sufix=os.path.splitext(srcfile)[1]<br />
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;destfile=srcdir+'//'+prefix+'_%04d'%(index)+sufix<br />
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;srcfile=os.path.join(srcfile,destfile)<br />
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;os.rename(srcfile,destfile)<br />
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;index+=1<br />
+<br />
+<br />
+<br />
+if __name__ == '__main__':<br />
+&nbsp; &nbsp; srcdir=&quot;F://python&quot;<br />
+&nbsp; &nbsp; prefix=&quot;test&quot;<br />
+&nbsp; &nbsp; Renamefiles(srcdir,prefix)<br />
+&nbsp; &nbsp; <br />
+<br />
+上述代码在pycharm中运行出错，出错提示：os.rename(srcfile,destfile)={WindowsError}[Error 2]<br />
+求小鱼儿或者鱼油帮忙解答<br />
+</td></tr></table>
+
+
+</div>
+<div id="comment_2116710" class="cm">
+</div>
+
+<div id="post_rate_div_2116710"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2116710"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2116710&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2116710&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2116710').innerHTML ? $('review_support_2116710').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2116710"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2116710&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2116710').innerHTML ? $('review_against_2116710').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2116710"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2116710', 'misc.php?mod=report&rtype=post&rid=2116710&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2178867" ><table id="pid2178867" class="plhin" summary="pid2178867" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2178867" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-304033.html" target="_blank" class="xw1">飞不过沧海</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2178867" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2178867_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-304033.html" target="_blank" class="xi2">飞不过沧海</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?304033" target="_blank" class="xi2">304033</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=304033&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=304033&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=304033&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-304033.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=304033&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：9 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=304033" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=304033" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2178867"   id="postnum2178867" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>15</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2178867" src="static/image/common/online_member.gif" />
+<em id="authorposton2178867">发表于 2014-11-21 10:19:21</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=304033" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2178867">
+相见恨晚呐！不过我没有鱼币啊<br />
+</td></tr></table>
+
+
+</div>
+<div id="comment_2178867" class="cm">
+</div>
+
+<div id="post_rate_div_2178867"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2178867"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2178867&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2178867&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2178867').innerHTML ? $('review_support_2178867').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2178867"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2178867&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2178867').innerHTML ? $('review_against_2178867').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2178867"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2178867', 'misc.php?mod=report&rtype=post&rid=2178867&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2186667" ><table id="pid2186667" class="plhin" summary="pid2186667" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2186667" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-304154.html" target="_blank" class="xw1">渗透小牛</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2186667" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2186667_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-304154.html" target="_blank" class="xi2">渗透小牛</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?304154" target="_blank" class="xi2">304154</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=304154&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=304154&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=304154&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-304154.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=304154&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：41 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=304154" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=304154" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2186667"   id="postnum2186667" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>16</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2186667" src="static/image/common/online_member.gif" />
+<em id="authorposton2186667">发表于 2014-11-26 12:53:48</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=304154" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2186667">
+好强大</td></tr></table>
+
+
+</div>
+<div id="comment_2186667" class="cm">
+</div>
+
+<div id="post_rate_div_2186667"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2186667"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2186667&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2186667&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2186667').innerHTML ? $('review_support_2186667').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2186667"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2186667&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2186667').innerHTML ? $('review_against_2186667').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2186667"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2186667', 'misc.php?mod=report&rtype=post&rid=2186667&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2201370" ><table id="pid2201370" class="plhin" summary="pid2201370" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2201370" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-298230.html" target="_blank" class="xw1">戴宇轩</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2201370" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2201370_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-298230.html" target="_blank" class="xi2">戴宇轩</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?298230" target="_blank" class="xi2">298230</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=298230&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=298230&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=298230&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-298230.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=298230&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：284 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=298230" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=298230" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2201370"   id="postnum2201370" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>17</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2201370" src="static/image/common/online_member.gif" />
+<em id="authorposton2201370">发表于 2014-12-5 18:14:45</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=298230" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2201370">
+<div class="blockcode"><div id="code_JWL"><ol><li>&gt;&gt;&gt; import os<br /><li>&gt;&gt;&gt; os<br /><li>&lt;module 'os' from '/private/var/mobile/Containers/Bundle/Application/B52C7376-D34D-460E-AB7D-BBD110828D55/Pythonista.app/pylib/os.py'&gt;<br /><li>&gt;&gt;&gt; os.path<br /><li>&lt;module 'posixpath' from '/private/var/mobile/Containers/Bundle/Application/B52C7376-D34D-460E-AB7D-BBD110828D55/Pythonista.app/pylib/posixpath.py'&gt;<br /><li></ol></div><em onclick="copycode($('code_JWL'));">复制代码</em></div></td></tr></table>
+
+
+</div>
+<div id="comment_2201370" class="cm">
+</div>
+
+<div id="post_rate_div_2201370"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2201370"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2201370&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2201370&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2201370').innerHTML ? $('review_support_2201370').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2201370"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2201370&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2201370').innerHTML ? $('review_against_2201370').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2201370"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2201370', 'misc.php?mod=report&rtype=post&rid=2201370&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2201372" ><table id="pid2201372" class="plhin" summary="pid2201372" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2201372" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-298230.html" target="_blank" class="xw1">戴宇轩</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2201372" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2201372_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-298230.html" target="_blank" class="xi2">戴宇轩</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?298230" target="_blank" class="xi2">298230</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=298230&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=298230&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=298230&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-298230.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=298230&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：284 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=298230" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=298230" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2201372"   id="postnum2201372" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>18</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2201372" src="static/image/common/online_member.gif" />
+<em id="authorposton2201372">发表于 2014-12-5 18:17:26</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=298230" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://fishc.taobao.com" target="_blank" ><b><font color="#FF0000">鱼币不够花？加入VIP会员吧！一次支持，终身学习哦^_^</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2201372">
+<i class="pstatus"> 本帖最后由 戴宇轩 于 2014-12-5 18:22 编辑 </i><br />
+<div class="quote"><blockquote><font size="2"><a href="http://bbs.fishc.com/forum.php?mod=redirect&amp;goto=findpost&amp;pid=1769479&amp;ptid=45512" target="_blank"><font color="#999999">小甲鱼 发表于 2014-4-7 15:06</font></a></font><br />
+嗯啊，os里包含了os.path模块。</blockquote></div><br />
+为什么我的分两个模块?os.path就是posixpath?<br />
+(我用的是类Unix的一员---iOS)<div class="blockcode"><div id="code_zkO"><ol><li>&gt;&gt;&gt; import os<br /><li>&gt;&gt;&gt; os.path<br /><li>&lt;module 'posixpath' from '/private/var/mobile/Containers/Bundle/Application/B52C7376-D34D-460E-AB7D-BBD110828D55/Pythonista.app/pylib/posixpath.py'&gt;<br /><li>&gt;&gt;&gt; import posixpath<br /><li>&gt;&gt;&gt; posixpath<br /><li>&lt;module 'posixpath' from '/private/var/mobile/Containers/Bundle/Application/B52C7376-D34D-460E-AB7D-BBD110828D55/Pythonista.app/pylib/posixpath.py'&gt;<br /><li></ol></div><em onclick="copycode($('code_zkO'));">复制代码</em></div><br />
+<br />
+</td></tr></table>
+
+
+</div>
+<div id="comment_2201372" class="cm">
+</div>
+
+<div id="post_rate_div_2201372"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2201372"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2201372&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2201372&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2201372').innerHTML ? $('review_support_2201372').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2201372"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2201372&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2201372').innerHTML ? $('review_against_2201372').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2201372"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2201372', 'misc.php?mod=report&rtype=post&rid=2201372&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2259710" ><table id="pid2259710" class="plhin" summary="pid2259710" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2259710" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-307932.html" target="_blank" class="xw1">煈愛</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2259710" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2259710_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-307932.html" target="_blank" class="xi2">煈愛</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?307932" target="_blank" class="xi2">307932</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=307932&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=307932&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=307932&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-307932.html" class="avtm" target="_blank"><img width="120" src="http://qs.qlogo.cn/qsthirdbg/10010088/EC0843CC8B3E8EFC15981D3A75038FA8/140" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：198 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=307932" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=307932" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2259710"   id="postnum2259710" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>19</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2259710" src="static/image/common/online_member.gif" />
+<em id="authorposton2259710">发表于 2015-1-15 20:43:50</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=307932" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2259710">
+:lol:大爱小甲鱼！</td></tr></table>
+
+
+</div>
+<div id="comment_2259710" class="cm">
+</div>
+
+<div id="post_rate_div_2259710"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2259710"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2259710&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=45512&amp;pid=2259710&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_2259710').innerHTML ? $('review_support_2259710').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_2259710"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=45512&amp;pid=2259710&amp;hash=92c671ac"  onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_2259710').innerHTML ? $('review_against_2259710').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_2259710"></span></a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2259710', 'misc.php?mod=report&rtype=post&rid=2259710&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="post_2270641" ><table id="pid2270641" class="plhin" summary="pid2270641" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar2270641" class="pls favatar">
+ <div class="pi">
+<div class="authi"><a href="space-uid-309920.html" target="_blank" class="xw1">python001</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo2270641" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo2270641_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="space-uid-309920.html" target="_blank" class="xi2">python001</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+	<dt>UID</dt><dd><a href="?309920" target="_blank" class="xi2">309920</a></dd>
+	<dt>日志</dt><dd><a href="home.php?mod=space&uid=309920&do=blog&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>相册</dt><dd><a href="home.php?mod=space&uid=309920&do=album&view=me&from=space" target="_blank" class="xi2"></a></dd>
+	<dt>贡献</dt><dd> </dd>
+	<dt>荣誉</dt><dd> </dd>
+	<dt>技术值</dt><dd> </dd>
+</dl>
+<div class="imicn">
+<a href="home.php?mod=space&amp;uid=309920&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/dreambred_c_apple/images/common//userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="space-uid-309920.html" class="avtm" target="_blank"><img src="http://avatar.fishc.com/avatar.php?uid=309920&size=middle" /></a></div>
+</div>
+<div style="border:2px #ccc dashed; margin:auto 14px 10px;padding:2px 5px">累计签到：76 天<br />连续签到：1 天<br /></div><dl class="pil cl"><dt><a href="bestanswer.php?mod=user&uid=309920" target="_blank"><font color=red>最佳答案</font></a></dt><dd><a href="bestanswer.php?mod=user&uid=309920" target="_blank"><font color=red>0</font></a>&nbsp; </dd></dl></div>
+</td>
+	
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="forum.php?mod=redirect&goto=findpost&ptid=45512&pid=2270641"   id="postnum2270641" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>20</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon2270641" src="static/image/common/online_member.gif" />
+<em id="authorposton2270641">发表于 2015-1-29 11:24:44</em>
+<span class="pipe">|</span>
+<a href="forum.php?mod=viewthread&amp;tid=45512&amp;page=1&amp;authorid=309920" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="a_pt"><a href="http://bbs.fishc.com/thread-79578-1-1.html" target="_blank" ><b><font color="#FF0000">【新特权】获取打包资源的新姿势！</font></b></a></div><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_2270641">
+收藏</td></tr></table>
+
+
+</div>
+<div id="comment_2270641" class="cm">
+</div>
+
+<div id="post_rate_div_2270641"></div>
+</div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign">1. 如果您的提问得到满意的答案，请务必选择【最佳答案】；2. 如果想鼓励一下楼主或帮助到您的朋友，可以给他们【评分】作为奖励；<br>3. 善用【论坛搜索】功能，那里可能有您想要的答案；4. 粘贴代码请点击编辑框上的 <> 按钮，否则您的代码可能会被“吃掉”！</div>
+<div class="a_pb"><a href="http://bbs.fishc.com/thread-56921-1-1.html" target="_blank" ><b><font color="#FF0000">【招生】15PB软件漏洞挖掘第16期，移动安全第2期开始接受报名。</font></b><b><font color="#FF0000">学费980元（住宿免费），现在报名享受提高班额外优惠。</font></b></a></div></td>
+</tr>
+<tr id="_postposition2270641"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;repquote=2270641&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+
+<p>
+<a href="javascript:;" onclick="showWindow('miscreport2270641', 'misc.php?mod=report&rtype=post&rid=2270641&tid=45512&fid=243', 'get', -1);return false;">举报</a>
+</p>
+
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</table>
+</div><div id="postlistreply" class="pl"><div id="post_new" class="viewthread_table" style="display: none"></div></div>
+</div>
+
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input type="hidden" name="formhash" value="92c671ac" />
+<input type="hidden" name="optgroup" />
+<input type="hidden" name="operation" />
+<input type="hidden" name="listextra" value="page%3D2" />
+<input type="hidden" name="page" value="1" />
+</form>
+
+
+<div class="pgbtn"><a href="thread-45512-2-1.html" hidefocus="true" class="bm_h">下一页 &raquo;</a></div>
+
+<div class="pgs mtm mbm cl">
+<div class="pg"><strong>1</strong><a href="thread-45512-2-2.html">2</a><a href="thread-45512-3-2.html">3</a><a href="thread-45512-4-2.html">4</a><a href="thread-45512-5-2.html">5</a><a href="thread-45512-6-2.html">6</a><label><input type="text" name="custompage" class="px" size="2" title="输入页码，按回车快速跳转" value="1" onkeydown="if(event.keyCode==13) {window.location='forum.php?mod=viewthread&tid=45512&amp;extra=page%3D2&amp;page='+this.value;; doane(event);}" /><span title="共 6 页"> / 6 页</span></label><a href="thread-45512-2-2.html" class="nxt">下一页</a></div><span class="pgb y" id="visitedforumstmp" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id,'pos':'21'})"><a href="forum-243-2.html">返回列表</a></span>
+<a id="newspecialtmp" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=243')" href="javascript:;" title ="发新帖"><img src="template/dreambred_c_apple/images//newtopic.gif" alt="发新帖" /></a>
+</div>
+
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+<script type="text/javascript">
+var postminchars = parseInt('0');
+var postmaxchars = parseInt('50000');
+var disablepostctrl = parseInt('0');
+</script>
+
+<div id="f_pst" class="pl bm bmw">
+<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;extra=page%3D2&amp;replysubmit=yes&amp;infloat=yes&amp;handlekey=fastpost" onSubmit="return fastpostvalidate(this)">
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls">
+</td>
+<td class="plc">
+
+<span id="fastpostreturn"></span>
+
+
+<div class="cl">
+<div id="fastsmiliesdiv" class="y"><div id="fastsmiliesdiv_data"><div id="fastsmilies"></div></div></div><div class="hasfsl" id="fastposteditor">
+<div class="tedt mtn">
+<div class="bar">
+<span class="y">
+<a href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512" onclick="return switchAdvanceMode(this.href)">高级模式</a>
+</span><script src="data/cache/seditor.js?X6m" type="text/javascript"></script>
+<div class="fpd">
+<a href="javascript:;" title="文字加粗" class="fbld">B</a>
+<a href="javascript:;" title="设置文字颜色" class="fclr" id="fastpostforecolor">Color</a>
+<a id="fastpostimg" href="javascript:;" title="图片" class="fmg">Image</a>
+<a id="fastposturl" href="javascript:;" title="添加链接" class="flnk">Link</a>
+<a id="fastpostquote" href="javascript:;" title="引用" class="fqt">Quote</a>
+<a id="fastpostcode" href="javascript:;" title="代码" class="fcd">Code</a>
+<a href="javascript:;" class="fsml" id="fastpostsml">Smilies</a>
+</div></div>
+<div class="area">
+<div class="pt hm">
+您需要登录后才可以回帖 <a href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href)" class="xi2">登录</a> | <a href="member.php?mod=register_315" class="xi2">立即注册</a>
+
+
+<a href="http://bbs.fishc.com/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D45512%26extra%3Dpage%253D2%26page%3D1&statfrom=login" target="_top" rel="nofollow"><img src="template/dreambred_c_apple/images/common//qq_login.gif" class="vm" /></a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="seccheck_fastpost">
+</div>
+
+
+<input type="hidden" name="formhash" value="92c671ac" />
+<input type="hidden" name="usesig" value="" />
+<input type="hidden" name="subject" value="  " />
+<p class="ptm pnpost">
+<a href="home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=243" class="y" target="_blank">本版积分规则</a>
+<button type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" onmouseover="checkpostrule('seccheck_fastpost', 'ac=reply');this.onmouseover=null" name="replysubmit" id="fastpostsubmit" class="pn pnc vm" value="replysubmit" tabindex="5"><strong>发表回复</strong></button>
+<label for="fastpostrefresh"><input id="fastpostrefresh" type="checkbox" class="pc" />回帖后跳转到最后一页</label>
+<script type="text/javascript">if(getcookie('fastpostrefresh') == 1) {$('fastpostrefresh').checked=true;}</script>
+</p>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+
+<script type="text/javascript">
+var connect_qzone_share_url = 'http://bbs.fishc.com/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=1&thread_id=45512';
+var connect_weibo_share_url = 'http://bbs.fishc.com/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=2&thread_id=45512';
+var connect_thread_info = {
+thread_url: 'http://bbs.fishc.com/thread-45512-1-1.html',
+thread_id: '45512',
+post_id: '1762097',
+forum_id: '243',
+author_id: '9',
+author: '<font color=red>小甲鱼</font><img src="source/plugin/qzom_renzheng/image/
+qzomvip.png" title="认证用户" alt="认证用户"/>'
+};
+
+connect_autoshare = '0';
+connect_isbind = '';
+if(connect_autoshare == 1 && connect_isbind) {
+_attachEvent(window, 'load', function(){
+connect_share(connect_weibo_share_url, connect_openid);
+});
+}
+</script>
+
+
+<div id="visitedforums_menu" class="p_pop blk cl" style="display: none;">
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td id="v_forums">
+<h3 class="mbn pbn bbda xg1">浏览过的版块</h3>
+<ul class="xl xl1">
+<li><a href="forum-173-1.html">Python交流</a></li></ul>
+</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript">
+new lazyload();
+</script>
+<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, 0, 1, 'forum.php?mod=viewthread&tid=45512', 1);}</script>
+</div>
+
+<div class="wp mtn">
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<script type="text/javascript">
+var relatedlink = [];relatedlink[0] = {'sname':'教程', 'surl':'http://fishc.taobao.com'};
+relatedlink[1] = {'sname':'vip', 'surl':'http://fishc.taobao.com'};
+relatedlink[2] = {'sname':'', 'surl':''};
+relatedlinks('postmessage_1762097');
+</script>
+
+<script type="text/javascript">
+function succeedhandle_followmod(url, msg, values) {
+var fObj = $('followmod_'+values['fuid']);
+if(values['type'] == 'add') {
+fObj.innerHTML = '不收听';
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+} else if(values['type'] == 'del') {
+fObj.innerHTML = '收听TA';
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash=92c671ac&fuid='+values['fuid'];
+}
+}
+fixed_avatar([1762097,1762270,1767888,1768018,1768164,1769479,1953283,1976978,1977118,2011929,2015525,2049226,2069399,2116710,2178867,2186667,2201370,2201372,2259710,2270641], 0);
+</script></div>
+</div>
+
+<div class="aff">    </div>
+
+
+<div class="footer_top footer_top_r"></div>
+
+
+
+
+
+<script type="text/javascript">(function(){var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = "http://znsv.baidu.com/customer_search/api/js?sid=14988791857133860392" + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000) + '&callback=znForDz';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+<script src="source/plugin/baidusubmit/template/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var bdjq = jQuery.noConflict(true);
+function znForDz(siteConfig){
+    bdjq(function(){
+        var zn = 'http://zhannei.baidu.com/cse/search?s=14988791857133860392';
+        if (siteConfig && siteConfig.resultUrl){
+            zn = 'http://' + siteConfig.resultUrl + '/cse/search?s=14988791857133860392'
+        }
+        var btn = bdjq("#scbar_btn");
+        if (btn.length == 0) {
+            btn = bdjq('button[name="searchsubmit"]');
+        }
+        if (btn.length == 0) {
+            btn = bdjq('input[name="searchsubmit"]');
+        }
+        if (btn.length == 0) {
+            btn = bdjq('#scbar_form input[type="submit"]');
+        }
+        if (btn.length == 0) {
+            btn = bdjq('#scbar_form button');
+        }            
+        if (btn.length > 0) {
+            btn.click(function(event){
+                var mod = bdjq('#scbar_mod').val() || bdjq('form input[name="mod"]').val()
+                var st = '';
+                var txt = bdjq('#scbar_txt').val() || bdjq('form input[name="srchtxt"]').val();
+                var user = '0';
+                if (mod === 'user' && user === '1'){
+                    st = 2;
+                    window.open(zn + "&q=" + encodeURIComponent(txt) + "&fst=" + st + "&partner=discuz");
+                    event.preventDefault();
+                } else if (mod === 'forum'){
+                    window.open(zn + "&q=" + encodeURIComponent(txt) + "&partner=discuz");
+                    event.preventDefault();            
+                }
+
+            });
+        }
+        var hot = bdjq('#scbar_hot a')
+            if (hot.length > 0){
+                hot.click(function(event){
+                var txt = bdjq(this).text();
+                window.open(zn + "&q=" + encodeURIComponent(txt) + "&partner=discuz");
+                event.preventDefault();
+            });
+        }
+    });
+}               
+</script>           <div id="ft" class="wp cl">
+<div id="flk">
+<p>
+            	<a href="forum.php?mod=misc&action=showdarkroom" >小黑屋</a><span class="pipe">&#8226;</span><a href="forum.php?mobile=yes" >手机版</a><span class="pipe">&#8226;</span><a href="archiver/" >Archiver</a><span class="pipe">&#8226;</span>( <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备11014136号</a> )&nbsp;<a href="http://discuz.qq.com/service/security" target="_blank" title="防水墙保卫网站远离侵害"><img src="static/image/common/security.png"></a><script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8867f2e9bc13a08cafa6cffdfff2e6bd' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</p>
+<p class="xs0">
+            	&copy; 2010-2017 <a href="http://www.fishc.com" target="_blank">FishC.com</a>
+GMT+8, 2017-4-20 13:48                Powered by <strong><a href="http://www.discuz.net" target="_blank">Discuz!</a></strong><em> X2.5</em>                
+                <!--If you delete this theme infomation,You will lose your VIP and service.-->
+                <!--请保留设计者Dreambred署名，删除会你失去水母模板的升级服务.-->
+                <span style="margin-left:5px;">Theme by <a href="http://www.dreambred.com" target="_blank" title="discuzx 2.5 ">dreambred</a></span>
+                <!--请保留设计者Dreambred署名，删除会你失去水母模板的升级服务.-->
+                <!--If you delete this theme infomation,You will lose your VIP and service.-->
+
+                
+  </p>
+            <div id="debuginfo">
+                        </div>
+</div>
+        
+        </div>
+
+
+<script src="home.php?mod=misc&ac=sendmail&rand=1492667315" type="text/javascript"></script>
+    <div id="scrolltop">
+<span><a href="forum.php?mod=post&amp;action=reply&amp;fid=243&amp;tid=45512&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)" class="replyfast" title="快速回复"><b>快速回复</b></a></span>
+<span hidefocus="true"><a title="返回顶部" onclick="window.scrollTo('0','0')" class="scrolltopa" ><b>返回顶部</b></a></span>
+<span>
+<a href="forum-243-1.html" hidefocus="true" class="returnlist" title="返回列表"><b>返回列表</b></a>
+</span>
+</div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { showTopLink(); });checkBlind();</script>
+			<div id="discuz_tips" style="display:none;"></div>
+			<script type="text/javascript">
+				var tipsinfo = '3264840|X3.1|0.6||0||0|7|1492667315|3ab28a37657ef565ab262c9cfb5fe214|2';
+			</script>
+			<script src="http://discuz.gtimg.cn/cloud/scripts/discuz_tips.js?v=1" type="text/javascript" charset="UTF-8"></script>    <script src="dreambred_dir/apple_c_3/js/j_gun.js" type="text/javascript"></script>
+</body>
+</html>
