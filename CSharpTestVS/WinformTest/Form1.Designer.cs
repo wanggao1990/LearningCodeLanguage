@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label4;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,6 +45,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notify_contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.最大化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.最小化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label6 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -58,6 +62,7 @@
             this.关闭窗体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.耳机菜单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,24 +74,22 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button7 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.notify_contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.最大化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.最小化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mdiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mdi窗口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             label5 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
+            this.notify_contextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -96,8 +99,28 @@
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.notify_contextMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = System.Drawing.Color.Transparent;
+            label5.Location = new System.Drawing.Point(15, 48);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(29, 12);
+            label5.TabIndex = 3;
+            label5.Text = "密码";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = System.Drawing.Color.Transparent;
+            label4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            label4.Location = new System.Drawing.Point(15, 23);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(29, 12);
+            label4.TabIndex = 2;
+            label4.Text = "账号";
             // 
             // label1
             // 
@@ -224,6 +247,36 @@
             this.notifyIcon1.Text = "Winform测试";
             this.notifyIcon1.Visible = true;
             // 
+            // notify_contextMenu
+            // 
+            this.notify_contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem,
+            this.最大化ToolStripMenuItem,
+            this.最小化ToolStripMenuItem});
+            this.notify_contextMenu.Name = "notify_contextMenu";
+            this.notify_contextMenu.Size = new System.Drawing.Size(113, 70);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exitToolStripMenuItem.Text = "exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // 最大化ToolStripMenuItem
+            // 
+            this.最大化ToolStripMenuItem.Name = "最大化ToolStripMenuItem";
+            this.最大化ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.最大化ToolStripMenuItem.Text = "最大化";
+            this.最大化ToolStripMenuItem.Click += new System.EventHandler(this.最大化ToolStripMenuItem_Click);
+            // 
+            // 最小化ToolStripMenuItem
+            // 
+            this.最小化ToolStripMenuItem.Name = "最小化ToolStripMenuItem";
+            this.最小化ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.最小化ToolStripMenuItem.Text = "最小化";
+            this.最小化ToolStripMenuItem.Click += new System.EventHandler(this.最小化ToolStripMenuItem_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -346,11 +399,22 @@
             this.splitContainer1.TabIndex = 21;
             this.toolTip1.SetToolTip(this.splitContainer1, "左键修改右侧颜色\r\n右键打开ContexMenu");
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(-4, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 11);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "点击进入testBox";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.mdiToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(493, 25);
@@ -437,30 +501,6 @@
             this.toolStrip1.TabIndex = 24;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolTip1
-            // 
-            this.toolTip1.AutomaticDelay = 200;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("宋体", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(-4, 6);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 11);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "点击进入testBox";
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(227, 172);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 25;
-            this.button7.Text = "Web Form";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -480,6 +520,20 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(33, 22);
             this.toolStripLabel1.Text = "Font";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 200;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(227, 172);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 25;
+            this.button7.Text = "Web Form";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox1
             // 
@@ -524,27 +578,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = System.Drawing.Color.Transparent;
-            label5.Location = new System.Drawing.Point(15, 48);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(29, 12);
-            label5.TabIndex = 3;
-            label5.Text = "密码";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = System.Drawing.Color.Transparent;
-            label4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            label4.Location = new System.Drawing.Point(15, 23);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(29, 12);
-            label4.TabIndex = 2;
-            label4.Text = "账号";
-            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(54, 45);
@@ -561,35 +594,20 @@
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 0;
             // 
-            // notify_contextMenu
+            // mdiToolStripMenuItem
             // 
-            this.notify_contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem,
-            this.最大化ToolStripMenuItem,
-            this.最小化ToolStripMenuItem});
-            this.notify_contextMenu.Name = "notify_contextMenu";
-            this.notify_contextMenu.Size = new System.Drawing.Size(153, 92);
+            this.mdiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mdi窗口ToolStripMenuItem});
+            this.mdiToolStripMenuItem.Name = "mdiToolStripMenuItem";
+            this.mdiToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
+            this.mdiToolStripMenuItem.Text = "mdi";
             // 
-            // exitToolStripMenuItem
+            // mdi窗口ToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // 最大化ToolStripMenuItem
-            // 
-            this.最大化ToolStripMenuItem.Name = "最大化ToolStripMenuItem";
-            this.最大化ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.最大化ToolStripMenuItem.Text = "最大化";
-            this.最大化ToolStripMenuItem.Click += new System.EventHandler(this.最大化ToolStripMenuItem_Click);
-            // 
-            // 最小化ToolStripMenuItem
-            // 
-            this.最小化ToolStripMenuItem.Name = "最小化ToolStripMenuItem";
-            this.最小化ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.最小化ToolStripMenuItem.Text = "最小化";
-            this.最小化ToolStripMenuItem.Click += new System.EventHandler(this.最小化ToolStripMenuItem_Click);
+            this.mdi窗口ToolStripMenuItem.Name = "mdi窗口ToolStripMenuItem";
+            this.mdi窗口ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mdi窗口ToolStripMenuItem.Text = "mdi窗口";
+            this.mdi窗口ToolStripMenuItem.Click += new System.EventHandler(this.mdi窗口ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -626,6 +644,7 @@
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Winform_MouseClick);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.notify_contextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -640,7 +659,6 @@
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.notify_contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -701,6 +719,8 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 最大化ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 最小化ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mdiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mdi窗口ToolStripMenuItem;
     }
 }
 

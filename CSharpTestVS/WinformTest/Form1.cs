@@ -68,9 +68,25 @@ namespace WinformTest
             if (e.Button == MouseButtons.Left)
             {
                 if (!this.IsMdiContainer)
+                {
                     BackColor = getRandomColor();
+                }
                 else
-                    mdiClient.BackColor = getRandomColor();
+                {
+                    // mdi窗口中有子窗口时不能修改背景色
+                    // mdiClient.BackColor = getRandomColor();
+                    //foreach (Form form in this.MdiChildren)
+                    //{
+                    //    form.Activate();
+                    //    form.BackColor = getRandomColor();
+                    //}
+                    Form form = this.ActiveMdiChild;
+                    if (form != null)
+                    {
+                        form.BackColor = getRandomColor();
+                    }
+                }
+
             }
             else if (e.Button == MouseButtons.Right)
             {
@@ -266,6 +282,20 @@ namespace WinformTest
         private void 最小化ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void mdi窗口ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 这里再不能修改背景颜色
+            if (this.IsMdiContainer != true) this.IsMdiContainer = true;
+
+            for (int i = 0; i < 2; i++)
+            {
+                Form form = new Form();
+                form.Text = String.Format("mdi form %d", i);
+                form.MdiParent = this;
+                form.Show();
+            }
         }
     }
 }
