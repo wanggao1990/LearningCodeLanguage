@@ -1,10 +1,5 @@
-*.[oa]
-*.exe
-*.cbp
-*.depend
-bin/
-obj/
-.exe
-*.layout
-.layout
-.vs/
+**/[Dd]ebug/
+**/[Rr]elease/
+**/bin/
+**/obj/
+**/.vs/
