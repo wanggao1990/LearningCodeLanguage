@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label4;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,22 +70,23 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.item1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mdiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mdi窗口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.mdiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mdi窗口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             label5 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
@@ -100,27 +101,6 @@
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = System.Drawing.Color.Transparent;
-            label5.Location = new System.Drawing.Point(15, 48);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(29, 12);
-            label5.TabIndex = 3;
-            label5.Text = "密码";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = System.Drawing.Color.Transparent;
-            label4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            label4.Location = new System.Drawing.Point(15, 23);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(29, 12);
-            label4.TabIndex = 2;
-            label4.Text = "账号";
             // 
             // label1
             // 
@@ -466,6 +446,21 @@
             this.menu2ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.menu2ToolStripMenuItem.Text = "menu2";
             // 
+            // mdiToolStripMenuItem
+            // 
+            this.mdiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mdi窗口ToolStripMenuItem});
+            this.mdiToolStripMenuItem.Name = "mdiToolStripMenuItem";
+            this.mdiToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
+            this.mdiToolStripMenuItem.Text = "mdi";
+            // 
+            // mdi窗口ToolStripMenuItem
+            // 
+            this.mdi窗口ToolStripMenuItem.Name = "mdi窗口ToolStripMenuItem";
+            this.mdi窗口ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.mdi窗口ToolStripMenuItem.Text = "mdi窗口";
+            this.mdi窗口ToolStripMenuItem.Click += new System.EventHandler(this.mdi窗口ToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -501,6 +496,30 @@
             this.toolStrip1.TabIndex = 24;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 200;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(227, 172);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 25;
+            this.button7.Text = "Web Form";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(359, 258);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 26;
+            this.button8.Text = "opencvTest";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -520,20 +539,6 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(33, 22);
             this.toolStripLabel1.Text = "Font";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.AutomaticDelay = 200;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(227, 172);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 25;
-            this.button7.Text = "Web Form";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox1
             // 
@@ -578,6 +583,27 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = System.Drawing.Color.Transparent;
+            label5.Location = new System.Drawing.Point(15, 48);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(29, 12);
+            label5.TabIndex = 3;
+            label5.Text = "密码";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = System.Drawing.Color.Transparent;
+            label4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            label4.Location = new System.Drawing.Point(15, 23);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(29, 12);
+            label4.TabIndex = 2;
+            label4.Text = "账号";
+            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(54, 45);
@@ -594,27 +620,13 @@
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 0;
             // 
-            // mdiToolStripMenuItem
-            // 
-            this.mdiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mdi窗口ToolStripMenuItem});
-            this.mdiToolStripMenuItem.Name = "mdiToolStripMenuItem";
-            this.mdiToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
-            this.mdiToolStripMenuItem.Text = "mdi";
-            // 
-            // mdi窗口ToolStripMenuItem
-            // 
-            this.mdi窗口ToolStripMenuItem.Name = "mdi窗口ToolStripMenuItem";
-            this.mdi窗口ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.mdi窗口ToolStripMenuItem.Text = "mdi窗口";
-            this.mdi窗口ToolStripMenuItem.Click += new System.EventHandler(this.mdi窗口ToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(493, 369);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
@@ -721,6 +733,7 @@
         private System.Windows.Forms.ToolStripMenuItem 最小化ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mdiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mdi窗口ToolStripMenuItem;
+        private System.Windows.Forms.Button button8;
     }
 }
 

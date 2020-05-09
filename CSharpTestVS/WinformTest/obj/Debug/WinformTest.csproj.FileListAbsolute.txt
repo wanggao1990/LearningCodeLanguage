@@ -10,3 +10,15 @@ F:\ProgramData\Microsoft Visual Studio 2015\CSharpTest\WinformTest\obj\Debug\Win
 F:\ProgramData\Microsoft Visual Studio 2015\CSharpTest\WinformTest\obj\Debug\WinformTest.RegForm.resources
 F:\ProgramData\Microsoft Visual Studio 2015\CSharpTest\WinformTest\obj\Debug\WinformTest.Boxes.resources
 F:\ProgramData\Microsoft Visual Studio 2015\CSharpTest\WinformTest\obj\Debug\WinformTest.WebForm.resources
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\bin\Debug\WinformTest.exe.config
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.exe
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.pdb
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\bin\Debug\WinformTest.exe
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\bin\Debug\WinformTest.pdb
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.Boxes.resources
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.Form1.resources
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.OpencvForm.resources
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.Properties.Resources.resources
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.RegForm.resources
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.WebForm.resources
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.csproj.GenerateResource.Cache

@@ -4,3 +4,6 @@ F:\ProgramData\Microsoft Visual Studio 2015\CSharpTest\CSharpTest\bin\Debug\CSha
 F:\ProgramData\Microsoft Visual Studio 2015\CSharpTest\CSharpTest\bin\Debug\CSharpTest.pdb
 F:\ProgramData\Microsoft Visual Studio 2015\CSharpTest\CSharpTest\obj\Debug\CSharpTest.exe
 F:\ProgramData\Microsoft Visual Studio 2015\CSharpTest\CSharpTest\obj\Debug\CSharpTest.pdb
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\CSharpTest\bin\Debug\CSharpTest.exe.config
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\CSharpTest\obj\Debug\CSharpTest.exe
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\CSharpTest\obj\Debug\CSharpTest.pdb

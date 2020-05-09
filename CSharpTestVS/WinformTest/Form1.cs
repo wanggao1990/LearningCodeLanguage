@@ -297,5 +297,10 @@ namespace WinformTest
                 form.Show();
             }
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            (new OpencvForm()).ShowDialog();
+        }
     }
 }
