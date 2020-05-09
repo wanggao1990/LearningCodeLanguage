@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/database/database.iml" filepath="$PROJECT_DIR$/database/database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myPkgs/myPkgs.iml" filepath="$PROJECT_DIR$/myPkgs/myPkgs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testGo.iml" filepath="$PROJECT_DIR$/testGo.iml" />
+    </modules>
+  </component>
+</project>
