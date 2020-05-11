@@ -10,11 +10,34 @@
 #define NATIVEDLL_API __declspec(dllimport)
 #endif
 
+#ifdef  _WIN64
+#include "opencv2\opencv.hpp"
+#endif // _WIN64
+
+
+
 // 此类是从 NativeDll.dll 导出的
 class NATIVEDLL_API CNativeDll {
 public:
 	CNativeDll();
 	// TODO:  在此添加您的方法。
+	
+    static void* GetInstance()
+    {
+        static CNativeDll instace = CNativeDll();
+        return &instace;
+    }
+
+    static void GrayScale(void *instance, uint8_t* pSrc, int channel, int width, int height, uint8_t** pDst)
+    {
+        ((CNativeDll*)instance)->grayScale(pSrc, channel, width, height, pDst);
+    }
+
+
+#ifdef  _WIN64
+    static void grayScale(uint8_t* pSrc, int channel, int width, int height, uint8_t** pDst);
+#endif // _WIN64
+
 };
 
 

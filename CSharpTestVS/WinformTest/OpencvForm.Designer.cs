@@ -31,13 +31,17 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.nativeFuncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.func1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opencvNativeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grayScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nativeFuncToolStripMenuItem});
+            this.nativeFuncToolStripMenuItem,
+            this.opencvNativeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(501, 25);
@@ -58,6 +62,29 @@
             this.func1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.func1ToolStripMenuItem.Text = "func1";
             this.func1ToolStripMenuItem.Click += new System.EventHandler(this.func1ToolStripMenuItem_Click);
+            // 
+            // opencvNativeToolStripMenuItem
+            // 
+            this.opencvNativeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openImageToolStripMenuItem,
+            this.grayScaleToolStripMenuItem});
+            this.opencvNativeToolStripMenuItem.Name = "opencvNativeToolStripMenuItem";
+            this.opencvNativeToolStripMenuItem.Size = new System.Drawing.Size(100, 21);
+            this.opencvNativeToolStripMenuItem.Text = "opencv native";
+            // 
+            // openImageToolStripMenuItem
+            // 
+            this.openImageToolStripMenuItem.Name = "openImageToolStripMenuItem";
+            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openImageToolStripMenuItem.Text = "&Open Image";
+            this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
+            // 
+            // grayScaleToolStripMenuItem
+            // 
+            this.grayScaleToolStripMenuItem.Name = "grayScaleToolStripMenuItem";
+            this.grayScaleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.grayScaleToolStripMenuItem.Text = "GrayScale";
+            this.grayScaleToolStripMenuItem.Click += new System.EventHandler(this.grayScaleToolStripMenuItem_Click);
             // 
             // OpencvForm
             // 
@@ -81,5 +108,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem nativeFuncToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem func1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opencvNativeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grayScaleToolStripMenuItem;
     }
 }

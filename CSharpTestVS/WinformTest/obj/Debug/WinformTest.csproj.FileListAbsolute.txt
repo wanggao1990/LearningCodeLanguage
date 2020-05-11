@@ -22,3 +22,4 @@ E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\Winform
 E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.RegForm.resources
 E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.WebForm.resources
 E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.csproj.GenerateResource.Cache
+E:\GitRepository\LearningCodeLanguage\CSharpTestVS\WinformTest\obj\Debug\WinformTest.csprojResolveAssemblyReference.cache
