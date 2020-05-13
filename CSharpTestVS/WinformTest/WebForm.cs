@@ -55,7 +55,9 @@ namespace WinformTest
         private void textBox1_KeyUp(object sender, KeyPressEventArgs e)
         {
             if ((char)Keys.Enter == e.KeyChar)
-                button1_Click(sender, e);
+            {
+                webBrowser1.Navigate(textBox1.Text);
+            }
         }
 
         private void back_btn_Click(object sender, EventArgs e)
