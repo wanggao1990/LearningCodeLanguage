@@ -10,3 +10,6 @@ difeferent code language in different branch
 [python](https://github.com/wanggao1990/LearningCodeLanguage/tree/python)
 
 [java](https://github.com/wanggao1990/LearningCodeLanguage/tree/java)
+
+[ruby](https://github.com/wanggao1990/LearningCodeLanguage/tree/ruby)
+
