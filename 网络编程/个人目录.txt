@@ -1,0 +1,58 @@
+1、知识准备
+  OSI网络七层模型，tcp/ip协议族，  IP,mac和端口
+
+2、socket基本概念
+      有哪些类型， （流式）面向连接和（数据包式）面向无连接的区别
+
+2、windows和linux下的socket编程区别
+   基本函数区别，udp/tcp通信模型
+ 
+   扩展： tcp 3次握手/4次挥手
+
+3、基本函数说明
+     
+    通用函数   socketaddr   socketaddr_in   
+    htonl, hotns,   inet_addr ....
+
+              socket，
+     (bind)              bind， 
+     connect,          listen
+     send/sendto    recv/recvfrom   （to/recv多用于udp）
+     	close
+
+   设置参数  setsockopt...
+
+  其他可能用到的函数， 例如getsockname，获取对端的ip,port
+ 
+
+
+
+4、TCP通信 （1）
+    模型，简单实例  （客户端、服务端 仅连接一次）
+
+5、TCP通信 (2)
+        在TCP(1)基础上 高级实例  （客户端、服务端 可以反复断开重连）
+
+6、UDP 通信
+         模型，简单示例
+
+7、基于UDP的聊天室
+
+
+77、 名字地址转换（域名<=>地址）
+
+777、套接字选项  setsockopt...  getsockopt...  
+
+8、TCP阻塞超时
+     阻塞和非阻塞
+
+  扩展 同步/非同步 , 引出  阻塞同步，非阻塞同步，非阻塞异步
+
+9、TCP高并发
+    select，poll，epool(linux专有)
+
+
+10、 http
+     http协议，
+     tcp与http的关系，  
+     利用tcp实现http服务端、客户端， 模拟GET\POST....
