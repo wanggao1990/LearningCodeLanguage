@@ -47,6 +47,15 @@ add_executable(setoptions           7-sockoptions/setoptions.cpp)
 
 add_executable(test_keepalive       7-sockoptions/test_keepalive.cpp)
 
+######## 14-advancedIO test
+add_executable(14-timeout_sigalarm  14-advancedIO/14-timeout_sigalarm.cpp)
+add_executable(14-timeout_select    14-advancedIO/14-timeout_select.cpp)
+add_executable(14-timeout_sockopt   14-advancedIO/14-timeout_sockopt.cpp)
+add_executable(14-readv_writev      14-advancedIO/14-readv_writev.cpp)
+add_executable(14-recvmsg_writemsg  14-advancedIO/14-recvmsg_writemsg.cpp)
+add_executable(14-recv_send         14-advancedIO/14-recv_send.cpp)
+
+add_executable(14-ioctl_FIONREAD    14-advancedIO/14-ioctl_FIONREAD.cpp)
 
 ######## 16- nonblocking IO test
 add_executable(nonblocking_RW       16-nonblockIO/nonblocking_RW.cpp)
